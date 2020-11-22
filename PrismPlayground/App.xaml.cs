@@ -1,6 +1,9 @@
 ﻿using Prism.Ioc;
+using Prism.Regions;
+using PrismPlayground.Core.Regions;
 using PrismPlayground.Views;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace PrismPlayground
 {
@@ -18,6 +21,11 @@ namespace PrismPlayground
         {
 
         }
-        
+
+        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+        {
+            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+            regionAdapterMappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionsAdapter>());
+        }
     }
 }
